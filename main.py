@@ -1,8 +1,9 @@
 import telebot
 import os
 
-TOKEN = os.environ.get("BOT_TOKEN")
-bot = telebot.TeleBot(TOKEN)
+API_KEY = os.getenv('API_KEY')
+
+bot = telebot.TeleBot("2103403524:AAFIgabvCWUSw2f_zXD973vJZY9Noipf2iQ")
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
@@ -13,12 +14,12 @@ gifFile = "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5eeea35538
 audioFile = "https://mp3gaga.com/wp-content/uploads/2021/03/COOLIO-GANGSTER-PARADISE-Mp3gaga.com_.mp3"
 
 
-@bot.message_handler(commands=['song','gif'])
+@bot.message_handler(commands=['music','gif'])
 def music_on(message):
 	if message.text == "/gif":
 		bot.send_document(message.chat.id,gifFile)
-	elif message.text == "/song":
-		bot.send_audio(message.chat.id, audioFile)
+	elif message.text == "/music":
+		bot.send_audio("@otaku_testing", audioFile)
 		
 
 
