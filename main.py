@@ -19,7 +19,8 @@ def music_on(message):
 	if message.text == "/gif":
 		bot.send_document(message.chat.id,gifFile)
 	elif message.text == "/music":
-		bot.send_audio("@otaku_testing", audioFile)
+		# bot.send_audio("@otaku_testing", audioFile)  # send the file to the channel
+		bot.send_audio(message.chat.id, audioFile)
 		
 
 
