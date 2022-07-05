@@ -1,4 +1,6 @@
 import telebot
+import os
+
 
 
 bot = telebot.TeleBot("2103403524:AAFIgabvCWUSw2f_zXD973vJZY9Noipf2iQ")
