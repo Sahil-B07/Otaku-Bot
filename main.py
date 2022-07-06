@@ -1,7 +1,7 @@
 import telebot
 import os
 
-API_KEY = os.getenv('API_KEY')
+API_KEY = os.getenv('Otaku_API')
 
 bot = telebot.TeleBot(API_KEY)
 
