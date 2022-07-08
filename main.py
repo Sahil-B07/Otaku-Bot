@@ -1,3 +1,4 @@
+
 import telebot 
 import os, requests
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -59,12 +60,6 @@ def inlineGif(message):
 
 
 
-# anime
-search_term = "attack on titan"
-r = requests.get("https://gogoanime.herokuapp.com/search?keyw=%s" % (search_term)).json()
-content = str(r[0]['animeUrl'])
-
-
 #Tenor
 apikey = "LIVDSRZULELA" 
 lmt = 1
@@ -73,10 +68,10 @@ lmt = 1
 
 audioFile = "https://mp3gaga.com/wp-content/uploads/2021/03/COOLIO-GANGSTER-PARADISE-Mp3gaga.com_.mp3"
 
-def giffy(message, search_term = "smily"):
+def giffy(message, search_term = "Hello"):
 	r = requests.get("https://g.tenor.com/v1/random?&q=%s&key=%s&limit=%s" % (search_term,apikey,lmt)).json()
 	imageUrl = str(r['results'][0]['url'])
-	bot.send_document(message.from_user.id,"https://goload.pro/download?id=MjYzMw==&typesub=Gogoanime-SUB&title=Shingeki+no+Kyojin+Episode+1")
+	bot.send_document(message.from_user.id,imageUrl)
 
 def songs(message):
 	# bot.send_audio("@otaku_testing", audioFile)  # send the file to the channel
