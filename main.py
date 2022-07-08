@@ -1,7 +1,7 @@
 
 import telebot 
 import os, requests
-from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
+from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, BotCommand
 
 API_KEY = os.getenv('Otaku_API')
 
@@ -33,7 +33,7 @@ def callback_query(call):
 
 # Commands
 
-@bot.message_handler(commands=['start', 'help', 'music'])
+@bot.message_handler(commands=['start', 'help', 'music','igif'])
 def commands(message):
 	userName = message.from_user.username
 
@@ -45,6 +45,10 @@ def commands(message):
 		# bot.send_audio("@otaku_testing", audioFile)  # send the file to the channel
 		# bot.send_audio(message.from_user.id, audioFile)
 		songs(message)
+	elif message.text == "/igif":
+		bot.send_message(message.from_user.id,"use /gif then type your context\nExample:\n1./gif anime\n2./gif smile\n...")
+
+
 
 @bot.message_handler(func=lambda message: True)
 def inlineGif(message):
@@ -58,7 +62,10 @@ def inlineGif(message):
 	else:
 		bot.send_message(message.from_user.id,"Wrong Input\nTry again!", reply_markup=Imarkup())
 
-
+command = [BotCommand("start","to start the bot"), BotCommand("help","A guide to use Otaku"),
+		    BotCommand("gif","Get random gifs"), BotCommand("igif","Inline gif search"),
+			    BotCommand("music","Listen to your fav music")]
+bot.set_my_commands(command)
 
 #Tenor
 apikey = "LIVDSRZULELA" 
