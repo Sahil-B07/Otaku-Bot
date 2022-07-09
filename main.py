@@ -79,7 +79,7 @@ def giffy(message, search_term = "Hello"):
 	r = requests.get("https://g.tenor.com/v1/random?&q=%s&key=%s&limit=%s" % (search_term,apikey,lmt)).json()
 	imageUrl = str(r['results'][0]['url'])
 	botMsg = bot.reply_to(message,"Searching Gif...")
-	bot.send_document(message.from_user.id,"http://103.222.20.150/ftpdata/Movies/tv%20series/English/Game%20Of%20Thrones/Season%201/Game%20of%20Thrones%20-%200xSpecial%201%20-%20Inside%20Game%20of%20Thrones.mkv")
+	bot.send_document(message.from_user.id,"http://167.114.174.132:9092/music/Coolio/Gangsta%27s%20Paradise.mp3")
 	bot.delete_message(message.from_user.id, botMsg.message_id)
 
 def songs(message):
