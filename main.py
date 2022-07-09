@@ -78,7 +78,9 @@ audioFile = "https://mp3gaga.com/wp-content/uploads/2021/03/COOLIO-GANGSTER-PARA
 def giffy(message, search_term = "Hello"):
 	r = requests.get("https://g.tenor.com/v1/random?&q=%s&key=%s&limit=%s" % (search_term,apikey,lmt)).json()
 	imageUrl = str(r['results'][0]['url'])
+	botMsg = bot.reply_to(message,"Searching Gif...")
 	bot.send_document(message.from_user.id,imageUrl)
+	bot.delete_message(message.from_user.id, botMsg.message_id)
 
 def songs(message):
 	# bot.send_audio("@otaku_testing", audioFile)  # send the file to the channel
