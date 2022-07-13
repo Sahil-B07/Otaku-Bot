@@ -62,7 +62,6 @@ def inlineGif(message):
 	else:
 		bot.send_message(message.chat.id,"Wrong Input\nTry again!", reply_markup=Imarkup())
 
-	print(message)
 
 # Commands
 
