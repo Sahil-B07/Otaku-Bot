@@ -104,7 +104,7 @@ def songs(message):
     # bot.send_audio("@otaku_testing", audioFile)  # send the file to the channel
     DIR = './Downloads'
     path = './Downloads/'
-    file_name = path + 'jjk.mkv'
+    file_name = path + 'jjk.gif'
 
     if (os.path.exists(file_name)):
         os.remove(file_name)
@@ -114,7 +114,7 @@ def songs(message):
     print("uploading.....")
     with open(file_name, 'wb') as file:
         response = requests.get(
-            'https://dl.animesp.xyz/Completed/Jujutsu%20Kaisen/720/Jujutsu%20Kaisen%20-%2001%20%5B720p%20x265%20BD%5D.mkv')
+            'https://compote.slate.com/images/697b023b-64a5-49a0-8059-27b963453fb1.gif')
         file.write(response.content)
 
         giFile = path + os.listdir(path)[0]
