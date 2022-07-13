@@ -121,7 +121,7 @@ def songs(message):
         giFile = path + os.listdir(path)[0]
     print("uploaded")
     bot.send_document(message.chat.id, document=open(
-        giFile, 'rb'), timeout=5000)
+        giFile, 'rb'), timeout=500)
     print("Sent!")
 
     # time.sleep(10)
