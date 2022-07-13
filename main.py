@@ -104,7 +104,7 @@ def songs(message):
     # bot.send_audio("@otaku_testing", audioFile)  # send the file to the channel
     DIR = './Downloads'
     path = './Downloads/'
-    file_name = path + 'jjk.gif'
+    file_name = path + 'jjk.mkv'
 
     if (os.path.exists(file_name)):
         os.remove(file_name)
