@@ -87,15 +87,15 @@ def giffy(message, search_term = "Hello"):
 def songs(message):
 	# bot.send_audio("@otaku_testing", audioFile)  # send the file to the channel
 
-	DIR = './Downloads/gifs'
+	DIR = './Downloads'
 	os.mkdir(DIR)
-	path = './Downloads/gifs/'
-	giFile = path + os.listdir(path)[0]
+	path = './Downloads/'
 
-	with open(giFile, 'wb') as file:
+	with open(path + 'jjk.mkv', 'wb') as file:
 		response = requests.get('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5eeea355389655.59822ff824b72.gif')
 		file.write(response.content)
 
+		giFile = path + os.listdir(path)[0]
 
 	bot.send_document(message.chat.id, document=open(giFile, 'rb'), timeout=200)
 
