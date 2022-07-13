@@ -107,7 +107,8 @@ def songs(message):
     file_name = path + 'jjk.mkv'
 
     if (os.path.exists(file_name)):
-        os.remove(file_name)
+        os.remove(giFile)
+        os.rmdir(DIR)
 
     os.mkdir(DIR)
 
