@@ -1,7 +1,7 @@
-
 import telebot 
-import os, requests
+import os, requests, time
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, BotCommand
+
 
 API_KEY = os.getenv('Otaku_API')
 
@@ -41,7 +41,6 @@ def commands(message):
 	elif message.text == "/help":
 		bot.reply_to(message, "/gif - get some intresting gifs\n/music - Listen to your fav music\ninline GIF - use /gif then type your context")
 	elif message.text == "/music":
-		bot.send_audio("@otaku_testing", audioFile)  # send the file to the channel
 		# bot.send_audio(message.from_user.id, audioFile)
 		songs(message)
 	elif message.text == "/igif":
@@ -63,6 +62,10 @@ def inlineGif(message):
 	else:
 		bot.send_message(message.chat.id,"Wrong Input\nTry again!", reply_markup=Imarkup())
 
+	print(message)
+
+# Commands
+
 command = [BotCommand("start","to start the bot"), BotCommand("help","A guide to use Otaku"),
 		    BotCommand("gif","Get random gifs"), BotCommand("igif","Inline gif search"),
 			    BotCommand("music","Listen to your fav music")]
@@ -83,7 +86,22 @@ def giffy(message, search_term = "Hello"):
 	
 def songs(message):
 	# bot.send_audio("@otaku_testing", audioFile)  # send the file to the channel
-	bot.send_audio(message.chat.id, audioFile)
+
+	DIR = './Downloads/gifs'
+	os.mkdir(DIR)
+	path = './Downloads/gifs/'
+	giFile = path + os.listdir(path)[0]
+
+	with open(giFile, 'wb') as file:
+		response = requests.get('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5eeea355389655.59822ff824b72.gif')
+		file.write(response.content)
 
 
-bot.infinity_polling()
+	bot.send_document(message.chat.id, document=open(giFile, 'rb'), timeout=200)
+
+	time.sleep(10)
+	os.remove(giFile)
+	os.rmdir(DIR)
+
+
+bot.infinity_polling(timeout=100)
