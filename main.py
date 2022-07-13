@@ -114,7 +114,7 @@ def songs(message):
     print("uploading.....")
     with open(file_name, 'wb') as file:
         response = requests.get(
-            'https://compote.slate.com/images/697b023b-64a5-49a0-8059-27b963453fb1.gif')
+            'https://www.pexels.com/video/6548176/download/')
         file.write(response.content)
 
         giFile = path + os.listdir(path)[0]
