@@ -90,12 +90,13 @@ def songs(message):
 	os.mkdir(DIR)
 	path = './Downloads/'
 
+	print("uploading.....")
 	with open(path + 'jjk.mkv', 'wb') as file:
 		response = requests.get('https://dl.animesp.xyz/Completed/Jujutsu%20Kaisen/720/Jujutsu%20Kaisen%20-%2001%20%5B720p%20x265%20BD%5D.mkv')
 		file.write(response.content)
 
 		giFile = path + os.listdir(path)[0]
-
+	print("uploaded")
 	# bot.send_document(message.chat.id, document=open(giFile, 'rb'), timeout=200)
 
 	# time.sleep(10)
