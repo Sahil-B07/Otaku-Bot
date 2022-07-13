@@ -96,11 +96,11 @@ def songs(message):
 
 		giFile = path + os.listdir(path)[0]
 
-	bot.send_document(message.chat.id, document=open(giFile, 'rb'), timeout=200)
+	# bot.send_document(message.chat.id, document=open(giFile, 'rb'), timeout=200)
 
-	time.sleep(10)
-	os.remove(giFile)
-	os.rmdir(DIR)
+	# time.sleep(10)
+	# os.remove(giFile)
+	# os.rmdir(DIR)
 
 
 bot.infinity_polling(timeout=100)
