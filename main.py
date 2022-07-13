@@ -97,9 +97,7 @@ def giffy(message, search_term="Hello"):
         imageUrl = str(r['results'][0]['url'])
         bot.send_document(message.chat.id, imageUrl)
     except exception as e:
-        botMsg = bot.reply_to(message,"Can't find.\nTry something different.")
-        time.sleep(5)
-        bot.delete_message(message.chat.id, botMsg.message_id)
+        print("try something new")
 
 def songs(message):
     # bot.send_audio("@otaku_testing", audioFile)  # send the file to the channel
