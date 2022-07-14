@@ -47,7 +47,7 @@ def commands(message):
             message, f"{userName}, how are you doing?", reply_markup=Imarkup())
     elif message.text == "/help":
         bot.reply_to(
-            message, "/gif - get some intresting gifs\n/music - Listen to your fav music\ninline GIF - use /gif then type your context")
+            message, "/gif - get some intresting gifs.\n/music - Listen to your fav music.\ninline GIF - use /gif then type your context.")
     elif message.text == "/music":
         # bot.send_audio(message.from_user.id, audioFile)
         songs(message)
