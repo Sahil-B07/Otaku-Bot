@@ -1,9 +1,7 @@
-from fileinput import filename
 from logging import exception
 import telebot
 import os
 import requests
-import time
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, BotCommand
 
 
