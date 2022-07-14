@@ -101,31 +101,7 @@ def giffy(message, search_term="Hello"):
 
 def songs(message):
     # bot.send_audio("@otaku_testing", audioFile)  # send the file to the channel
-    DIR = './Downloads'
-    path = './Downloads/'
-    file_name = path + 'jjk.mkv'
-
-    if (os.path.exists(file_name)):
-        os.remove(giFile)
-        os.rmdir(DIR)
-
-    os.mkdir(DIR)
-
-    print("uploading.....")
-    with open(file_name, 'wb') as file:
-        response = requests.get(
-            'https://www.pexels.com/video/6548176/download/')
-        file.write(response.content)
-
-        giFile = path + os.listdir(path)[0]
-    print("uploaded")
-    bot.send_document(message.chat.id, document=open(
-        giFile, 'rb'), timeout=500)
-    print("Sent!")
-
-    # time.sleep(10)
-    # os.remove(giFile)
-    # os.rmdir(DIR)
+    bot.send_document(message.chat.id, audioFile)
 
 
 bot.infinity_polling(timeout=100)
