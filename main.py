@@ -51,7 +51,7 @@ def commands(message):
     elif message.text in ["/music","/music@tech_otaku_bot"]:
         # bot.send_audio(message.from_user.id, audioFile)
         songs(message)
-    elif message.text in ["/igif","/gif@tech_otaku_bot"]:
+    elif message.text in ["/igif","/igif@tech_otaku_bot"]:
         bot.send_message(
             message.chat.id, "use /gif then type your context\nExample:\n1./gif anime\n2./gif smile\n...")
 
