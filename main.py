@@ -61,7 +61,7 @@ def commands(message):
 @bot.message_handler(func=lambda message: True)
 def inlineGif(message):
     inpText = message.text
-    if "/gif " in inpText:
+    if ("/gif " in inpText) or ("/gif@dooordarshan_bot" in inpText):
         context = inpText.replace("/gif", " ").strip()
         botMsg = bot.reply_to(message, "Searching Gif...")
         if context != "":
