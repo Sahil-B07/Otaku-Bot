@@ -66,8 +66,8 @@ def inlineGif(message):
         botMsg = bot.reply_to(message, "Searching Gif...")
         if context != "":
             giffy(message, context)
-        elif ("/gif@tech_otaku_bot" in inpText):
-            giffy(message)
+    elif ("/gif@tech_otaku_bot" in inpText):
+        giffy(message)
         bot.delete_message(message.chat.id, botMsg.message_id)
 
 
