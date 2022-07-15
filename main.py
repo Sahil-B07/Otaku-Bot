@@ -69,9 +69,6 @@ def inlineGif(message):
         else:
             giffy(message)
         bot.delete_message(message.chat.id, botMsg.message_id)
-    else:
-        bot.send_message(
-            message.chat.id, "Wrong Input\nTry again!", reply_markup=Imarkup())
 
 
 # Commands
