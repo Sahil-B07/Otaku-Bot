@@ -42,16 +42,16 @@ def callback_query(call):
 @bot.message_handler(commands=['start', 'help', 'music', 'igif'])
 def commands(message):
     userName = message.from_user.username
-    if message.text == "/start":
+    if message.text in ["/start", "/start@tech_otaku_bot"]:
         bot.reply_to(
             message, f"{userName}, how are you doing?", reply_markup=Imarkup())
-    elif message.text == "/help":
+    elif message.text in ["/help","/help@tech_otaku_bot"]:
         bot.reply_to(
             message, "/gif - get some intresting gifs.\n/music - Listen to your fav music.\ninline GIF - use /gif then type your context.")
-    elif message.text == "/music":
+    elif message.text in ["/music","/music@tech_otaku_bot"]:
         # bot.send_audio(message.from_user.id, audioFile)
         songs(message)
-    elif message.text == "/igif":
+    elif message.text in ["/igif","/gif@tech_otaku_bot"]:
         bot.send_message(
             message.chat.id, "use /gif then type your context\nExample:\n1./gif anime\n2./gif smile\n...")
 
