@@ -61,12 +61,12 @@ def commands(message):
 @bot.message_handler(func=lambda message: True)
 def inlineGif(message):
     inpText = message.text
-    if ("/gif " in inpText) or ("/gif@tech_otaku_bot" in inpText):
+    if ("/gif " in inpText):
         context = inpText.replace("/gif", " ").strip()
         botMsg = bot.reply_to(message, "Searching Gif...")
         if context != "":
             giffy(message, context)
-        else:
+        elif ("/gif@tech_otaku_bot" in inpText):
             giffy(message)
         bot.delete_message(message.chat.id, botMsg.message_id)
 
