@@ -37,7 +37,7 @@ def callback_query(call):
 
 # Commands
 
-@bot.message_handler(commands=['start', 'help', 'music', 'igif'])
+@bot.message_handler(commands=['start', 'help', 'music', 'igif','list'])
 def commands(message):
     userName = message.from_user.username
     if message.text in ["/start", "/start@tech_otaku_bot"]:
@@ -52,6 +52,9 @@ def commands(message):
     elif message.text in ["/igif","/igif@tech_otaku_bot"]:
         bot.send_message(
             message.chat.id, "use /gif then type your context\nExample:\n1./gif anime\n2./gif smile\n...")
+    elif message.text in ["/list","/list@tech_otaku_bot"]:
+        bot.send_message(
+            message.chat.id, "List:", reply_markup=list_markup())
 
 # inline commands
 
@@ -78,7 +81,8 @@ def inlineGif(message):
 command = [BotCommand("start", "to start the bot"), BotCommand("help", "A guide to use Otaku"),
            BotCommand("gif", "Get random gifs"), BotCommand(
                "igif", "Inline gif search"),
-           BotCommand("music", "Listen to your fav music")]
+           BotCommand("music", "Listen to your fav music"),
+           BotCommand("list", "get list")]
 bot.set_my_commands(command)
 
 
@@ -99,6 +103,28 @@ def giffy(message, search_term="Hello"):
 def songs(message):
     # bot.send_audio("@otaku_testing", audioFile)  # send the file to the channel
     bot.send_document(message.chat.id, audioFile)
+
+
+
+def list_markup():
+    markup = InlineKeyboardMarkup()
+    markup.row_width = 2
+    list_of_cities = ["Click","Open", "Done"]
+    for each in list_of_cities:
+        markup.add(InlineKeyboardButton(each, callback_data = each))
+    
+    return markup
+    
+@bot.callback_query_handler(func=lambda message: True)
+def list_callback(call):
+    list_of_cities = ["Click","Open", "Done"]
+    for each in list_of_cities:
+        if call.data == each:
+            bot.answer_callback_query(call.id, "")
+            bot.send_message(call.from_user.id, "clicked "+each)
+        else:
+            continue
+
 
 
 bot.infinity_polling(timeout=100)
