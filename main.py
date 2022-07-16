@@ -42,16 +42,16 @@ def callback_query(call):
 @bot.message_handler(commands=['start', 'help', 'music', 'igif'])
 def commands(message):
     userName = message.from_user.username
-    if message.text == "/start":
+    if message.text in ["/start", "/start@tech_otaku_bot"]:
         bot.reply_to(
             message, f"{userName}, how are you doing?", reply_markup=Imarkup())
-    elif message.text == "/help":
+    elif message.text in ["/help","/help@tech_otaku_bot"]:
         bot.reply_to(
             message, "/gif - get some intresting gifs.\n/music - Listen to your fav music.\ninline GIF - use /gif then type your context.")
-    elif message.text == "/music":
+    elif message.text in ["/music","/music@tech_otaku_bot"]:
         # bot.send_audio(message.from_user.id, audioFile)
         songs(message)
-    elif message.text == "/igif":
+    elif message.text in ["/igif","/igif@tech_otaku_bot"]:
         bot.send_message(
             message.chat.id, "use /gif then type your context\nExample:\n1./gif anime\n2./gif smile\n...")
 
@@ -61,17 +61,16 @@ def commands(message):
 @bot.message_handler(func=lambda message: True)
 def inlineGif(message):
     inpText = message.text
-    if "/gif" in inpText:
-        context = inpText.replace("/gif", " ").strip()
+    if ("/gif " in inpText):
         botMsg = bot.reply_to(message, "Searching Gif...")
+        context = inpText.replace("/gif", " ").strip()
         if context != "":
             giffy(message, context)
-        else:
-            giffy(message)
+            bot.delete_message(message.chat.id, botMsg.message_id)
+    if ("/gif@tech_otaku_bot" in inpText):
+        botMsg = bot.reply_to(message, "Searching Gif...")
+        giffy(message)
         bot.delete_message(message.chat.id, botMsg.message_id)
-    else:
-        bot.send_message(
-            message.chat.id, "Wrong Input\nTry again!", reply_markup=Imarkup())
 
 
 # Commands
