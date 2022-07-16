@@ -6,9 +6,7 @@ from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, BotCommand
 
 
 API_KEY = os.getenv('Otaku_API')
-
 bot = telebot.TeleBot(API_KEY)
-
 
 def Imarkup():
     markup = InlineKeyboardMarkup()
@@ -61,6 +59,7 @@ def commands(message):
 @bot.message_handler(func=lambda message: True)
 def inlineGif(message):
     inpText = message.text
+<<<<<<< HEAD
     if ("/gif " in inpText):
         botMsg = bot.reply_to(message, "Searching Gif...")
         context = inpText.replace("/gif", " ").strip()
@@ -71,6 +70,20 @@ def inlineGif(message):
         botMsg = bot.reply_to(message, "Searching Gif...")
         giffy(message)
         bot.delete_message(message.chat.id, botMsg.message_id)
+=======
+    if ("/gif@tech_otaku_bot" in inpText):
+        botMsg = bot.reply_to(message, "Searching Gif...")
+        giffy(message)
+        bot.delete_message(message.chat.id, botMsg.message_id)
+    if ("/gif" in inpText):
+        botMsg = bot.reply_to(message, "Searching Gif...")
+        context = inpText.replace("/gif ", " ").strip()
+        if context != "":
+            giffy(message, context)
+            bot.delete_message(message.chat.id, botMsg.message_id)
+        else:
+            giffy(message)
+>>>>>>> Master
 
 
 # Commands
