@@ -1,12 +1,55 @@
 from logging import exception
+from turtle import update
 import telebot
 import os
 import requests
-from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, BotCommand
+from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, BotCommand, Update
 
 
 API_KEY = os.getenv('Otaku_API')
 bot = telebot.TeleBot(API_KEY)
+
+
+
+
+
+def list_markup():
+    markup = InlineKeyboardMarkup()
+    markup.row_width = 2
+    list_of_cities = ["Click","Open", "Done"]
+    for each in list_of_cities:
+        markup.add(InlineKeyboardButton(each, callback_data = each))
+    
+    return markup
+    
+# @bot.callback_query_handler(func=lambda message: True)
+# def list_callback(call):
+#     list_of_cities = ["Click","Open", "Done"]
+#     for each in list_of_cities:
+#         if call.data == each:
+#             bot.answer_callback_query(call.id, "")
+#             bot.send_message(call.from_user.id, "clicked "+each)
+            
+#         else:
+#             continue
+
+@bot.callback_query_handler(func=lambda message: True)
+def button(call):
+
+
+   if call.data == 'Click':
+      keyboard=[[InlineKeyboardButton(' Just Happy',callback_data='0')],
+                [InlineKeyboardButton('Very Happy',callback_data='1')]]
+
+      reply_markup=InlineKeyboardMarkup(keyboard)
+
+    #   bot.edit_message_reply_markup(
+    #      chat_id=call.id,
+    #      message_id=call.message.id,
+    #      reply_markup=reply_markup)
+
+
+
 
 def Imarkup():
     markup = InlineKeyboardMarkup()
@@ -103,27 +146,6 @@ def giffy(message, search_term="Hello"):
 def songs(message):
     # bot.send_audio("@otaku_testing", audioFile)  # send the file to the channel
     bot.send_document(message.chat.id, audioFile)
-
-
-
-def list_markup():
-    markup = InlineKeyboardMarkup()
-    markup.row_width = 2
-    list_of_cities = ["Click","Open", "Done"]
-    for each in list_of_cities:
-        markup.add(InlineKeyboardButton(each, callback_data = each))
-    
-    return markup
-    
-@bot.callback_query_handler(func=lambda message: True)
-def list_callback(call):
-    list_of_cities = ["Click","Open", "Done"]
-    for each in list_of_cities:
-        if call.data == each:
-            bot.answer_callback_query(call.id, "")
-            bot.send_message(call.from_user.id, "clicked "+each)
-        else:
-            continue
 
 
 
